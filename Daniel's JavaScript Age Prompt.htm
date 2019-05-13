@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Daniel's JavaScript Age Prompt</title>
+<script language="javascript"> 
+function CheckForReasonableAge(){
+age=window.prompt ("How old are you?")
+if (age==10)
+alert ("Hey! That's my age! JavaScript is intelligent!")
+else
+if (age < 5 && age > " ")
+alert ("That's too young! I don't believe you! JavaScript is intelligent!")
+else
+if (age > 80)
+alert ("That's too old! I don't believe you! JavaScript is intelligent!")
+else
+if (isNaN(age) || age==null || age < " "){ alert("Please enter your age as a number."); CheckForReasonableAge(); }
+else
+alert ("Hmmm. Interesting. JavaScript is out of range.")
+}
+</script>
+</head>
+<center><h1>Try the JavaScript Age Prompt!</center></h1>
+<p>Click on the button! Then, enter your age and/or numbers into it. Hit Enter for your result. This JavaScript is more complicated. Email me for brief lessons. Lessons start at $0.00.
+<INPUT
+TYPE=button value="Click Here!"
+onClick="CheckForReasonableAge()">
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+  <head>
+    <title>Daniel's JavaScript Customized Page</title>
+    <script language="Javascript">
+      function stoperr(a,b,c){
+        a1=a; b1=b; c1=c;
+        if (a1=="Invalid property value." || "Invalid Argument") return true;
+        else return false;
+      }
+      window.onerror=stoperr;
+      function changehead() {
+        //i = document.form1.heading.selectedIndex;
+        headcolor = document.form1.heading.value;
+        document.getElementById("head1").style.color = headcolor;
+      }
+      function changebody() {
+        //i = document.form1.body.selectedIndex;
+        doccolor = document.form1.body.value;
+        document.getElementById("p1").style.color = doccolor;
+      }
+      function changebg(){
+        //i=document.form1.bg.selectedIndex;
+        bgcolor=document.form1.bg.value;
+        document.bgColor=bgcolor;
+      }
+      function ChangeTitle() {
+         var newtitle = document.form1.newtitle.value;
+         var head1 = document.getElementById("head1");
+         head1.firstChild.nodeValue=newtitle;
+      }
+      function AddNode(tag) {
+         if (!document.getElementById) return;
+         element = document.createElement(tag);
+         if (tag != "HR") {
+            txt = document.form1.newtext.value;
+            element.innerHTML=txt;
+         }
+         s=document.getElementById("p1");
+         s.appendChild(element);
+      }
+      function DeleteNode() {
+         if (!document.getElementById) return;
+         s=document.getElementById("p1");
+         s.removeChild(s.lastChild);
+      }
+      function AddText() {
+         var sentence=document.form1.newtext.value;
+         var node=document.createTextNode(" " + sentence);
+         document.getElementById("p1").appendChild(node);
+      }
+    </script>
+  </head>
+  <body>
+    <center><h1 Id="head1">Customized Page</center></h1>
+    <p Id="p1">This page is customized by changing the colours below and adding text and elements.</p>
+    <p>
+    <FORM NAME="form1" id="form1">
+      <B>Heading color: </B><input type="text" name="heading" value="black" onChange="changehead();"> <b>Text: </b><input type="text" name="newtitle" size=30> <input type="button" value="Change" onClick="ChangeTitle();">
+      <!--<select name="heading" onChange="changehead();">
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+      <option value="purple">Purple</option>
+      <option value="violet">Violet</option>
+      <option value="aqua">Aqua</option>
+      <option value="turquoise">Turquoise</option>
+      <option value="lime">Lime</option>
+      <option value="olive">Olive</option>
+      <option value="silver">Silver</option>
+      <option value="gold">Gold</option>
+      <option value="#802a00">#802a00 (My brown).</option>
+      <option value="grey">Grey</option>
+      </select>-->
+      <br>
+      <B>Main paragraph color: </B><input type="text" name="body" value="black" onChange="changebody();">
+      <!--<select name="body" onChange="changebody();">
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+      <option value="violet">Violet</option>
+      <option value="aqua">Aqua</option>
+      <option value="turquoise">Turquoise</option>
+      <option value="lime">Lime</option>
+      <option value="olive">Olive</option>
+      <option value="silver">Silver</option>
+      <option value="gold">Gold</option>
+      <option value="brown">Brown</option>
+      <option value="#802a00">#802a00 (My brown).</option>
+      </select>-->
+      <br>
+      <b>Body Background: </b><input type="text" name="bg" value="white" onChange="changebg();"><br>
+      <!--<select name="bg" onChange="changebg();">
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+      <option value="violet">Violet</option>
+      <option value="aqua">Aqua</option>
+      <option value="turquoise">Turquoise</option>
+      <option value="lime">Lime</option>
+      <option value="olive">Olive</option>
+      <option value="pear">Pear</option>
+      <option value="silver">Silver</option>
+      <option value="gold">Gold</option>
+      <option value="bronze">Bronze</option>
+      <option value="#802a00">#802a00 (My brown).</option>
+      <option value="grey">Grey</option>
+      </select>-->
+      <p><input type="button" onClick="document.form1.reset(); changebg(); changebody(); changehead();" value="Reset"><P>
+      <textarea name="newtext" cols="35" rows="10"></textarea><p>
+      <input type="button" value="Add Paragraph"
+         onClick="AddNode('P');">
+      <input type="button" value="Add Heading 3"
+         onClick="AddNode('H3');">
+      <input type="button" value="Add Line"
+         onClick="AddNode('HR');">
+      <input type="button" value="Delete a Node"
+         onClick="DeleteNode();"> <input type="button" value="Add Text" onClick="AddText();"> <input type="button" value="Custom" onClick="AddNode('DIV');">
+    </FORM>
+  </body>
+</html>

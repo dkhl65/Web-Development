@@ -1,0 +1,75 @@
+<html><head><title>Daniel's JavaScript Cookies</title>
+<script language="javascript">
+function print(){
+line1="<div style='width:400; background-color:aqua'><img src='Images/Logo.png'><sup>®</sup><font size='+2'> <b>Global Environment Officers<sup>®</sup></b></font><br>\n";
+line2="<b>Name: </b>"+this.name+".<br>\n";
+line3="<b>Email: </b>"+this.email+".<br>\n";
+line4="<b>Role: </b>"+this.role+".<br>\n";
+line5="<b>"+this.role+" since: </b>"+this.since+".<p>\n";
+line6="<font size='-2'>Global Environment Officers<sup>®</sup> is affiliated with the Green Team.</font></div><br>\n";
+document.write(line1,line2,line3,line4,line5,line6);
+}
+function Card(name,email,role,since){
+this.name=name;
+this.email=email;
+this.role=role;
+this.since=since;
+this.print=print;
+}
+</script>
+<script language="javascript" src="Other/Common JavaScript Functions.js"></script>
+<script language="javascript" src="Other/Error Handler.js"></script>
+</head><body>
+<script language="javascript">
+cookies=document.cookie;
+startpos=cookies.indexOf("Username")+9;
+   if (startpos<9) {
+      // No cookie set
+      name=window.prompt("Please enter your name","");
+      d = new Date();
+      d.setHours(d.getHours() + 1);
+      expires="expires=" + d.toGMTString();
+      document.cookie="Username=" + name + "; " + expires;
+      document.write("<h2>Welcome, " + name + "!</h2>");
+      var e=document.getElementById("expire");
+      e.innerHTML=d.toString();
+      alert("Welcome, " + name + "!");
+   } else {
+      // Cookie was found
+      endpos=cookies.indexOf(";",startpos);
+      if (endpos==-1) endpos=cookies.length;
+      name=cookies.substring(startpos,endpos);
+   document.write("<h2>Welcome Back, " + name + "!</h2>");
+   }
+</script>
+<p>This was done using a cookie. Your profile will expire in one hour.
+<div id="expire"></div>
+<p>
+<script lanuage="javascript">
+document.write("Location Protocol: "+location.protocol+"<br>Location HREF: "+location.href+"<br>Location Path: "+location.pathname);
+array1=new Array(
+"Phrase 0.",
+"Phrase 1.",
+"Phrase 2.",
+"Phrase 3.",
+"Phrase 4.",
+"Phrase 5.",
+"Phrase 6.",
+"Phrase 7.",
+"Phrase 8.",
+"Phrase 9.");
+ran=Math.floor(Math.random()*array1.length);
+document.write("<p>"+array1[ran]);
+</script>
+<script language="javascript">
+daniel=new Card("Daniel Liang","daniel65@live.ca","President","June 12, 2009");
+shadan=new Card();
+shadan.name="Shadan Quershi";
+shadan.email="shadansalman@live.com";
+shadan.role="Vice president";
+shadan.since="June 12, 2009";
+daniel.print();
+shadan.print();
+</script>
+</body>
+</html>

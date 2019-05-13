@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Daniel's Event Handlers</title>
+<script language="javascript">
+var moves=0;
+function MouseMove(e){
+moves++;
+window.status="Mouse: "+e.clientX+", "+e.clientY+". Moves: "+moves+".";
+if (e.clientX == 0 && e.clientY == 0) window.alert("Congratulations! You have positioned the moused over the pixel where both coordinates are 0!");
+}
+var clicks=0;
+function clickCount(e){ clicks++;
+document.form1.count.value="Click button: "+e.button+". Clicks: "+clicks+". Coordinates: "+e.clientX+", "+e.clientY+".";
+}
+var press=0;
+function key(e){
+press++;
+document.form1.code.value="Keycode: "+e.keyCode+". Presses: "+press+". Modifyers: "+e.ctrlKey+", "+e.altKey+", "+e.shiftKey+".";
+}
+</script>
+</head>
+<body onMouseMove="MouseMove(event);" onMouseDown="clickCount(event);" onKeyPress="key(event);" onLoad="document.form1.count.value='Load Complete'">
+<center><h1>This page has many event handlers</h1>
+<img src="Images/Mouse-Over 1.png" onmouseover="document.images[0].src='Images/Mouse-Over 2.png';"
+onmouseout="document.images[0].src='Images/Mouse-Over 1.png';"/></center>
+<br>
+<center><form name="form1">
+<input type="button" name="button1" value="What comes after the letter A? (Click Here!)"
+onclick="document.form1.button1.value='The letter B! (Double click!)';"
+ondblclick="document.form1.button1.value='Do you like that?';"/><br>
+<input type="text" value="Page Loading" name="count" size=50><br>
+<input type="text" name="code" size=52><br>
+</form>
+</center>
+</body>
+</html>

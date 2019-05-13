@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Daniel's JavaScript Input</title>
+<script language="javascript" type="text/javascript">
+var counter=0;
+ID=window.setTimeout("Update();",1000);
+function Update(){
+counter++;
+document.form5.input1.value="The Counter has reached "+counter;
+ID=window.setTimeout("Update();",1000);
+}
+</script>
+<script language="javascript" src="Other/Common JavaScript Functions.js"></script>
+</head>
+<body onunload="alert ('Goodbye! Please come again!');" onLoad="greet();">
+<script language="javascript">
+name=window.prompt('Please enter your name.','Daniel');
+alert ("Welcome, "+name+"!")
+document.write('<center><h1>Hello, ', name, '!</center></h1>');
+document.write('<p>This greeting was created using the input of your name. Try some other JavaScript in this page.');
+</script>
+<form name="gen">
+<input type="button" value="Close Window" onClick="window.close();"/>
+<input type="button" value="Print Page" onClick="window.print();"/>
+<input type="button" name="go" value="Move Back 1 Page"
+onclick="window.history.go(-1);"/>
+<input type="button" value="Do you like pizza?" onClick="temp=window.confirm('Do you like pizza?');
+window.status=(temp)?'You like pizza!':'You dislike pizza.';">
+</form>
+<p>
+<form name="form5">
+<input TYPE="text" NAME="input1" SIZE="40"><br>
+<input TYPE="button" VALUE="Reset" onClick="counter = 0;"><br>
+<input TYPE="button" VALUE="Stop/Start" onClick="window.clearTimeout(ID);" onDBLClick="Update();">
+</form>
+<p>Try the Circle Area Computer below.
+<br>
+<img src="Images/Circle Area.png">
+<script language="javascript">
+</script>
+<form name="form1">
+Circle Radius:<input type="text" name="rad" onChange="document.form1.area.value=document.form1.rad.value*document.form1.rad.value*Math.PI;"/><br/>
+Circle Area:<input type="text" name="area"/><br/>
+</form>
+<p>Try the Sphere Volume Computer below.
+<br>
+<img src="Images/Sphere Volume.png">
+<script language="javascript">
+</script>
+<form name="form2">
+Sphere Radius:<input type="text" name="rad2" onChange="document.form2.vol.value=4/3*document.form2.rad2.value*document.form2.rad2.value*document.form2.rad2.value*Math.PI;"/><br/>
+Sphere Volume:<input type="text" name="vol"/><br/>
+</form>
+<p>Try the Circumference Computer below.
+<br>
+<img src="Images/Circumference.png">
+<script language="javascript">
+</script>
+<form name=form3>
+Circle Radius:<input type="text" name="rad3" onChange="document.form3.cir.value=2*document.form3.rad3.value*Math.PI;"/><br/>
+Circumference:<input type="text" name="cir"/><br/>
+</form>
+<p>Try the Cylinder Volume Computer below.
+<br>
+<img src="Images/Cylinder Volume.png">
+<script language="javascript">
+</script>
+<form name="form4">
+Cylinder Radius:<input type="text" name="rad4"/><br/>
+Cylinder Height:<input type="text" name="hite"/><br/>
+Cylinder Volume:<input type="text" name="vol2"/><br/>
+<input type="button" name="button4" value="Compute Volume"
+onClick="document.form4.vol2.value=document.form4.rad4.value*document.form4.rad4.value*document.form4.hite.value*Math.PI;"/>
+</form>
+</body>
+</html>

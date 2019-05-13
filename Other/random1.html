@@ -1,0 +1,46 @@
+<pre>
+<span style="color: #7E7E7E;">//Soft&nbsp;pot,&nbsp;PULL-UP.&nbsp;Current&nbsp;scale:&nbsp;C4&nbsp;Major&nbsp;(I&nbsp;think)</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;note&nbsp;	frequency&nbsp;</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;c&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;261&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;d&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;294&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;e&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;329&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;f&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;349&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;g&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;392&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;a&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;440&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;b&nbsp;	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;493&nbsp;Hz</span>
+<span style="color: #7E7E7E;">//&nbsp;*&nbsp;C	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;523&nbsp;Hz</span>
+<span style="color: #CC6600;">int</span> notes[] = { 
+&nbsp;&nbsp;261,&nbsp;294,&nbsp;329,&nbsp;349,&nbsp;392,&nbsp;440,&nbsp;493,&nbsp;523&nbsp;};
+<span style="color: #CC6600;">char</span> names[] = { 
+&nbsp;&nbsp;<span style="color: #006699;">'c'</span>,<span style="color: #006699;">'d'</span>,<span style="color: #006699;">'e'</span>,<span style="color: #006699;">'f'</span>,<span style="color: #006699;">'g'</span>,<span style="color: #006699;">'a'</span>,<span style="color: #006699;">'b'</span>,<span style="color: #006699;">'C'</span> };
+const&nbsp;<span style="color: #CC6600;">int</span> pot = 0;
+const&nbsp;<span style="color: #CC6600;">int</span> piezo = 9;
+const&nbsp;<span style="color: #CC6600;">int</span> button = 2;
+<span style="color: #CC6600;">int</span> potval;
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>setup</b></span>(){
+&nbsp;&nbsp;<span style="color: #CC6600;">pinMode</span>(button, <span style="color: #006699;">INPUT</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;">pinMode</span>(piezo, <span style="color: #006699;">OUTPUT</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">begin</span>(9600);
+}
+<span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>loop</b></span>(){
+&nbsp;&nbsp;potval&nbsp;=&nbsp;<span style="color: #CC6600;">analogRead</span>(pot);
+&nbsp;&nbsp;potval&nbsp;=&nbsp;<span style="color: #CC6600;">map</span>(potval, 0, 1023, 0, 7);
+&nbsp;&nbsp;<span style="color: #CC6600;">if</span> (<span style="color: #CC6600;">analogRead</span>(pot) &gt; 1018){
+&nbsp;&nbsp;&nbsp;&nbsp;potval&nbsp;=&nbsp;7;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span style="color: #7E7E7E;">//"mary had a little lamb" setting</span>
+&nbsp;&nbsp;<span style="color: #7E7E7E;">//potval = map(potval, 0, 1023, 0, 5);</span>
+&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(names[potval]);
+&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(<span style="color: #006699;">"\t"</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(<span style="color: #CC6600;">analogRead</span>(pot));
+&nbsp;&nbsp;<span style="color: #CC6600;"><b>Serial</b></span>.<span style="color: #CC6600;">print</span>(<span style="color: #006699;">"\n"</span>);
+&nbsp;&nbsp;<span style="color: #CC6600;">if</span> (<span style="color: #CC6600;">digitalRead</span>(button) == <span style="color: #006699;">LOW</span>){
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">tone</span>(piezo, notes[potval]);
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span style="color: #CC6600;">else</span>{
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #CC6600;">noTone</span>(piezo);
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span style="color: #CC6600;">delay</span>(75);
+}
+
+</pre>

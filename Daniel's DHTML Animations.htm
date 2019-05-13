@@ -1,0 +1,43 @@
+<html>
+<head><title>Daniel's DHTML Animations</title>
+<script language="javascript"> 
+var pos1=-95;
+var pos2=-95;
+var pos3=-95;
+var speed1 = Math.floor(Math.random()*10)+2;
+var speed2 = Math.floor(Math.random()*10)+2;
+var speed3 = Math.floor(Math.random()*10)+2;
+function next() {
+   pos1 += speed1;
+   pos2 += speed2;
+   pos3 += speed3;
+   if (pos1 > 988) pos1 = -95;
+   if (pos2 > 988) pos2 = -95;
+   if (pos3 > 988) pos3 = -95;
+   document.getElementById("go1").style.left = pos1;
+   document.getElementById("pic").style.left = pos2;
+   document.getElementById("go2").style.left = pos3;
+   ani=window.setTimeout("next();",10);
+   window.status="Speed 1: "+speed1+". Speed 2: "+speed2+". Speed 3: "+speed3+".";
+}
+</script>
+<script language="javascript" type="text/javascript" src="Other/Common JavaScript Functions.js"></script></head>
+<body onload="next();">
+<center><h1>Animation with DHTML</h1></center>
+<p>This is animation with DHTML at random speeds. The speed units are pixels per 1/100 second. Click the default bullet to randomize speeds.
+<p>
+<div Id="go1" STYLE="position:absolute; visibility:show; left:0; top:100; width:100; height:87;">
+<img src="Images/Animation.png" onMouseOver="document.images[0].src='Images/Animation Rollover.jpg'" onMouseOut="document.images[0].src='Images/Animation.png'"></div>
+<div Id="pic" STYLE="position:absolute; visibility:show; left:0; top:200; width:100; height:87;">
+<img src="Images/Animation Rollover.jpg" onMouseOver="document.images[1].src='Images/Animation.png'" onMouseOut="document.images[1].src='Images/Animation Rollover.jpg'"></div>
+<div Id="go2" STYLE="position:absolute; visibility:show left:0; top:300; width:100; height:87;">
+<img src="Images/Animation.png" onMouseOver="document.images[2].src='Images/Animation Rollover.jpg'" onMouseOut="document.images[2].src='Images/Animation.png'"></div>
+<form name="form1" style="position:absolute; top:400;">
+<input type="radio" name="radio1" onClick="speed1=Math.floor(Math.random()*10)+2; speed2=Math.floor(Math.random()*10)+2; speed3=Math.floor(Math.random()*10)+2;" checked>Use random speeds (default)
+<input type="radio" name="radio1" onclick="speed1=4; speed2=2; speed3=8;">Use fixed speeds
+<input type="radio" name="radio1" onClick="speed1=15; speed2=10; speed3=20;">Use fast speeds
+<input type="radio" name="radio1" onClick="speed1=1.5; speed2=1.75; speed3=0.5;">Use slow speeds
+<input type="button" name="on" onClick="window.clearTimeout(ani); document.form1.on.value='Start'" value="Stop" onDBLClick="next(); document.form1.on.value='Stop'">
+</form>
+</body>
+</html>

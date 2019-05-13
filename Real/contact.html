@@ -1,0 +1,28 @@
+<html>
+<head><title>Global Environment Officers - Stop Global Warming! - Contact Us</title>
+<script language="javascript">
+/*var temp=document.send.temp.checked;
+var em=document.send.email.disabled;
+function disable(){
+em=(temp)? true : false;
+}*/
+function validate(){
+if (document.send.name0.value.length < 1){ alert("Please enter your name."); return false;}
+if (document.send.email.value.indexOf("@")==-1 || document.send.email.value.length < 6 || document.send.email.value.indexOf(".") == -1){ alert("Please enter your email address."); return false;
+}
+if (document.send.msg.value.length < 6){ alert("Please enter a message"); return false;}
+else{ return true;}
+}
+</script>
+</head>
+<body text="white" bgcolor=#0eac00 link="red" alink="yellow" vlink="orange">
+<a href="index.html"><img border=0 src="Logo2.png" alt="Global Environment Officers - Home"></a><hr>
+<center><h1>Contact Us</h1></center>
+<p>Controlling pollution on Earth is very important. Our group has done some researched some ways to protect the environment. Anyway, we also want to hear from you. Please send us a message about what you liked and disliked about this site and your concerns about the environment. You can send a message below or contact us at <a href="mailto:daniel65@live.ca">test.</a>
+<form name="send" action="mailto:daniel65@live.ca" enctype="text/plain" method="POST" onSubmit="return validate();">
+<b>Name: </b><input type="text" size=30 name="name0"><br>
+<b>Email: </b><input type="text" size=30 name="email"><br>
+<input type="checkbox" name="temp" checked>Reply by email<br>
+<textarea name="msg" cols=50 rows=15></textarea><br>
+<input type="submit" value="Send"><br></form>
+

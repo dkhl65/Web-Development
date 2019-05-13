@@ -1,0 +1,24 @@
+<html><head><title>Daniel's Error Handler</title>
+<script language="javascript" src="Other/Error Handler.js"></script>
+</head><body onload="error"><style>#i{background-color:cyan}</style>
+<center><h1>Error Handling test</h1></center>
+<p>This document tests error handlers. There are also other stuff. This is an encoded line: 
+<script language="javascript">
+encode="Test: ~`!@#$%^&*()-_=+{}[]:;'\"<,>./?\|	Test finished.";
+encoder=escape(encode);
+document.write(encoder+" This is the unencoded text: "+encode);
+</script>
+<form>
+<input type="button" value="Error" onClick="error2">
+</form>
+<script language="javascript">
+pow=1;
+i=Math.floor(Math.random()*1e10)+1;
+while (pow < i){
+document.write("Squares: "+pow+"<br>");
+pow*=2;
+}
+document.write("<span id='i'><p>i="+i+"</span>")
+</script>
+</body>
+</html>

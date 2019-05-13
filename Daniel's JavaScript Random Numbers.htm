@@ -1,0 +1,44 @@
+<html><head><title>Daniel's JavaScript Random Numbers</title></head><body onLoad="document.bu.gen.value='Generate New Numbers'">
+<center><h1>JavaScript Random Numbers</h1></center>
+<p>This page has all types of random numbers. Lets see them.
+<script language="javascript">
+document.write(" PI is equal to "+Math.PI+".");
+</script>
+<form name="bu">
+<input type="button" name="gen" value="Generating numbers..." onClick="location.reload()"></form></p>
+<script LANGUAGE="JavaScript"> 
+total = 0;
+for (i=1; i<=500; i++) {
+    num = Math.random();
+    total += num;
+    window.status="Generated " + i + " numbers. Total value: "+total;
+}
+average = total / 500;
+average = Math.round(average * 1000) / 1000;
+document.write("<H2>Average of 500 numbers: " + average + "</H2>");
+</script>
+<p>
+<h3>Random numbers</h3>
+<script language="javascript">
+for (i=1; i<=5; i++){
+j=Math.random();
+document.write(j+"<br>")}
+</script>
+<p>
+<h3>Unfloored Random Numbers Between 1 and 100</h3>
+<script language="javascript">
+for (i=1; i<=5; i++){
+j=Math.random()*100+1
+document.write(j+"<br>")}
+</script>
+<p>
+<h3>Floored Random Numbers Between 1 and 100.</h3>
+<script language="javascript">
+for (i=1; i<=5; i++){
+j=Math.floor(Math.random()*100)+1;
+document.write(j+"<br>");
+}
+</script>
+</body></html>
+
+

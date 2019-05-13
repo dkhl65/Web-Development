@@ -1,0 +1,21 @@
+<html><head><title>Navigator Frame</title>
+<script language="javascript" src="Error Handler.js"></script></head><body>
+<center><h1>Navigation Frame</center></h1>
+<p>Enter a website to load it into the empty frame.
+<script language="javascript">
+/*temp="Right location properties:<br>URL: "+parent.right.location.url+"<br>Anchor: "+parent.right.location.hash+"<br>Hostname: "+parent.right.location.hostname+"<br>Query: "+parent.right.location.search+"<br>Pathname: "+parent.right.location.pathname+"<br>Port: "+parent.right.location.port+"<br>";
+document.getElementById("pro").innerHTML=temp;*/
+browser=navigator.appName;
+version=navigator.appVersion.substring(22,25);
+all=browser+" "+version
+if (browser !="Microsoft Internet Explorer") all=navigator.appName;
+document.write("<p>Browser: "+all+"<br>Java Enabled: "+navigator.javaEnabled()+"<br>");
+if (document.getElementById && document.getElementsByTagName && document.createElement && document.createTextNode && document.documentElement){ document.write("The W3C DOM is supported.<br>");}
+else document.write("The W3C DOM is not supported.<br>");
+</script>
+<noscript>Please use JavaScript.</noscript>
+<form name="navigate">
+<input type="text" name="input" size=40>
+<input type="button" value="load" onClick="parent.right.location='http://'+document.navigate.input.value">
+</form>
+</body></html>

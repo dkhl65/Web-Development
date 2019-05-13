@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Global Environment Officers - Stop Global Warming! - Home</title>
+<script language="javascript">
+msg="Save the earth! Stop global warming! ";
+msg+="It is the only one we've got! Take action now!";
+msg="... ..."+msg
+pos=0;
+function ScrollMessage() {
+   var newtext = msg.substring(pos, msg.length) + msg.substring(0, pos);
+   var h3 = document.getElementById("scroll");
+   h3.firstChild.nodeValue = newtext;
+   pos++;
+   if (pos > msg.length) pos = 0;
+   window.setTimeout("ScrollMessage()",100);
+}
+var banner1=0;
+var direction=1;
+function Move() {
+   obj=document.getElementById("banner");
+   banner1 += direction;
+   if (banner1 >= 100 || banner1 <= -100) direction = 0 - direction;
+   obj.style.left=banner1;
+   window.setTimeout("Move();",10);
+}
+function describe(text){
+if (!document.getElementById) return;
+_="Stop Global Warming!";
+t=text;
+desc=document.getElementById("banner");
+desc.innerHTML="<h2>"+t+"</h2>";
+}
+</script>
+</head>
+<body onLoad="ScrollMessage(); Move();" style="scrollbar-face-color: #008000; letter-spacing:1.25; scrollbar-arrow-color: #00ffff">
+<body bgcolor=#0eac00>
+<body text=white>
+<body link=crimson vlink="orange" alink="yellow">
+<img alt="Global Environment Officers" src="Logo2.png">
+<hr><center><h1>Stop Global Warming!- Introduction</h1></center>
+<p>Global warming is dangerous. It causes polar ice to melt.This can be a danger to animals like polar bears. It will make it harder to hunt it's prey. It forces them to swim long distances. They can tire and drown. Global warming is caused be pollution.These are greenhouse gases that cause the earth to heat up. Carbon dioxide and methane are examples of greenhouse gases. The gas that is the most concern is carbon dioxide (CO<sub>2</sub>). Carbon dioxide levels are consistantly rising since the Industrial Revolution. Click on the links for more information.
+<p><a href="contact.html">Contact us.</a>
+<p>
+<center><div style="background-color:olive; width:75%;">
+<h3 id="scroll">Stop Global Warming!</h3>
+</div></center>
+<br>
+<table border align=center>
+<caption><h2><center>Links for information</caption></h2></center>
+<tr>
+<th>Links for information on animals</th>
+<td>
+<ol>
+<li><a href="endangered.html" onMouseOver="describe('Info on endangered animals');" onMouseOut="describe(_);">Endangered animals</a></ol></td></tr>
+</table><br>
+<center><table><tr><th id="banner" style="position:relative; background-color:yellow; color:red; width:90%"><h2>Stop Global Warming!</h2></th></tr></table></center>
+
+

@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Daniel's JavaScript Clock and Time</title>
+<script language="javascript">
+function Clock(){
+clock=document.getElementById("time");
+//Initialize variables
+now = new Date();
+hours=now.getHours();
+mins=now.getMinutes();
+secs=now.getSeconds();
+mill=now.getMilliseconds();
+dat=now.getDate();
+temp=now.toString();
+year=now.getFullYear();
+pm="AM"
+tester=now.toLocaleString();
+day=temp.substring(0,3);
+zone=temp.substring(20,23);
+if (new Date().getHours() > 9) zone=temp.substring(19,23);
+find=(tester.indexOf("-")!=-1)? tester.indexOf("-") : tester.indexOf(" ");
+mon=tester.substring(0,find);
+midnight=false;
+//test time values
+if (secs < 10) secs= "0" + secs;
+if (mins < 10) mins= "0" + mins;
+if (hours >= 12 && midnight==false) pm="PM";
+if (hours > 12)hours=hours-12;
+if (hours==0){hours=hours+12; pm="AM"; midnight=true;}
+if (mill < 10) mill="00"+mill;
+if (mill < 100 && mill > 10) mill="0"+mill;
+if (hours==12 && pm=="AM" && mins=="00" && secs=="00" && midnight==true) alert("It's midnight!");
+if (hours==12 && mins=="00" && secs=="00" && pm=="PM" && midnight==false) alert("It's noon!");
+//output
+clock.innerHTML="<span class='count'>"+ hours + ":" + mins + ":" + secs + "." + mill +" " + pm +" "+zone+ "<br>" + day +", " + mon+" " +dat+", "+year+"</span>";
+timer=window.setTimeout("Clock();",1);
+}
+//global variables for new year
+var nextyear=new Date().getFullYear()+1;
+var targetDate=new Date(nextyear,0,1);
+var targetInMs=targetDate.getTime();
+var sec0=1000;
+var min0=60*sec0;
+var hr0=60*min0;
+var day0=24*hr0;
+//global variables for birthday
+var byear=new Date().getFullYear();
+if ((new Date().getMonth() >= 2 && new Date().getDate() > 25)||new Date.getMonth > 2) byear=byear+1;
+if (new Date().getMonth() > 2) byear=byear+1;
+var targetDate1=new Date(byear,2,25);
+var targetInMs1=targetDate1.getTime();
+function countdown(){
+count0=document.getElementById("counter");
+//initialize local variables for difference
+var nowInMs=new Date().getTime();
+var diff=targetInMs-nowInMs;
+var pad= diff/day0;
+var daysleft=Math.floor(pad); //days
+diff-=(daysleft*day0);
+pad=diff/hr0;
+var hrsleft=Math.floor(pad); //hours
+diff-=(hrsleft*hr0);
+pad=diff/min0;
+var minsleft=Math.floor(pad); //minutes
+diff-=(minsleft*min0);
+pad=diff/sec0;
+var secsleft=Math.floor(pad); //seconds
+//test time values
+if (minsleft < 10) minsleft="0"+minsleft;
+if (secsleft < 10) secsleft="0"+secsleft;
+//birthday operation
+//initialize local variables for difference for birthday
+var nowInMs1=new Date().getTime();
+var diff1=targetInMs1-nowInMs1;
+var pad1= diff1/day0;
+var daysleft1=Math.floor(pad1); //days
+diff1-=(daysleft1*day0);
+pad1=diff1/hr0;
+var hrsleft1=Math.floor(pad1); //hours
+diff1-=(hrsleft1*hr0);
+pad1=diff1/min0;
+var minsleft1=Math.floor(pad1); //minutes
+diff1-=(minsleft1*min0);
+pad1=diff1/sec0;
+var secsleft1=Math.floor(pad1); //seconds
+//test time values
+if (minsleft1 < 10) minsleft1="0"+minsleft1;
+if (secsleft1 < 10) secsleft1="0"+secsleft1;
+//output
+if (new Date().getMonth() == 2 && new Date().getDate() == 25){ count0.innerHTML="Happy birthday, Daniel!<p>Time until the year "+nextyear+":<br><span class='count'>"+daysleft+" Days, "+hrsleft+":"+minsleft+":"+secsleft+"</span>"; } //Birthday coincidence
+else if (new Date().getMonth()==0 && new Date().getDate()==1){ count0.innerHTML="Happy New Year!<p>Time until Daniel's birthday:<br><span class='count'>"+daysleft1+" Days, "+hrsleft1+":"+minsleft1+":"+secsleft1+"</span>"; } //New Year coincidence
+else { count0.innerHTML="Time until the year "+nextyear+":<br><span class='count'>"+daysleft+" Days, "+hrsleft+":"+minsleft+":"+secsleft+"</span><p>Time until Daniel's birthday:<br><span class='count'>"+daysleft1+" Days, "+(hrsleft1+1)+":"+minsleft1+":"+secsleft1+"</span>"; } //Normal
+c=window.setTimeout("countdown();",1);
+}
+</script>
+</head>
+<style>
+#time{color:white; background-color:green; width:350px; font-size:20pt}
+#counter{width:350px; color:white; background-color:crimson; font-size:20pt}
+.count{font-family:consolas}
+</style>
+<body onLoad="Clock(); countdown();">
+<script language="javascript">
+window.setInterval("alert('It has been an hour already!');",3600000);
+</script>
+<center><h1>Current Time and date</center></h1>
+<p>
+<script language="javascript" type="text/javascript">
+d=new Date();
+localtime=d.toString();
+utctime=d.toGMTString();
+document.write("<center><b>Local Time:</b> " + "<span class='count'>" + localtime + "<BR></span>");
+document.write("<b>UTC time:</b> " + "<span class='count'>" + utctime + "</span>");
+</script>
+<p><center><div id="time">00:00:00.000 ??, ??, ??</div><br>
+<div id="counter">?? Days, ??:??:??</div></center>
+<p>
+<script language="javascript"> 
+cDate=new Date();
+leap=false;
+//oly=false;
+year=cDate.getFullYear();
+use=year%4;
+olyseas=0
+fifa=false;
+if (use==0){olyseas="summer"}
+else if (use==2){olyseas="winter"; fifa=true}
+else {olyseas="none"}
+nDate=cDate.getTime();
+//-1262322000000 for Jan 1, 2009
+if (year%4==0) leap=true;
+document.write("<center>Since January 1, 1979, " + nDate + " milliseconds have passed.<br/>Leap year: "+leap+"<br>Olympic Year Season: "+olyseas+"<br>World Cup this year: "+fifa);
+</script>
+<form>
+<center><input type=button value="Update Time Components" onClick="location.reload();"><br>
+<input type=button value="Freeze Clock" onClick="window.clearTimeout(timer); window.clearTimeout(c);"><br>
+<input type=button value="Unfreeze Clock" onClick="Clock(); countdown();"></center>
+</form>
+</body>
+</html>

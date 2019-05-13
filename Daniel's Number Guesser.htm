@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>Daniel's Number Guesser</title>
+    <script LANGUAGE="JavaScript">
+      var num = Math.floor(Math.random() * 100) + 1;
+      var tries = 0;
+      function Guess() {
+        var g = document.form1.guess1.value;
+        tries++;
+        status = "Tries: " + tries;
+        if (g < num)
+          document.form1.hint.value = "No, guess higher.";
+        if (g > num)
+         document.form1.hint.value = "No, guess lower.";
+        if (g == num && tries > 3) {
+          window.alert("Correct! You guessed it in " + tries + " tries.");
+          temp1=window.confirm("Do you want to play again?")
+          temp1?location.reload(): window.close()
+        }
+        if (g == num && tries < 4){
+          window.alert("Correct! You guessed it in only "+tries+" try(ies)! It is your lucky day!");
+          temp2=window.confirm("Do you want to try again?")
+          temp2?location.reload(): window.close()
+        }
+        if (tries == 10 && g !=num) {
+          window.alert("Sorry, time's up. The number was: " + num);
+          temp=window.confirm("Do you want to try again ? ")
+          temp?location.reload(): window.close()
+        }
+      }
+      var count=40;
+      var timer=timer
+      function Countdown(){
+        count--;
+        document.begin.counter.value="Seconds Left : "+count;
+        timer=window.setTimeout("Countdown(); ",1000);
+        if (count==0){
+          alert("Sorry, 40 seconds are up. The number was: "+num+".");
+          Q=confirm("Do you want to try again ? ");
+          Q?location.reload(): window.close()
+        }
+      }
+      function disable(tf){
+        document.form1.guesser.disabled=tf;
+        document.form1.hint.disabled=tf;
+        document.form1.guess1.disabled=tf;
+        document.form1.disabled=tf;
+      }
+      function shortcut(e){
+        switch (e.keyCode){
+          //case 66: document.begin.start.click(); break; //B
+          case 80: document.begin.clear.click(); break; //P
+          case 78: document.begin.new0.click(); break; //N
+          case 71: document.form1.guesser.click(); break; //G
+        }
+      }
+      function check(e){
+         if (e.keyCode < 48 || e.keyCode > 57) return false;
+         else return true;
+      }
+    </script>
+  </head>
+  <body onLoad="document.begin.counter.value = 'Ready.'" onKeyPress="shortcut(event); ">
+    <center><h1>Number Guesser</h1></center>
+    <p>Guess a number between 1 and 100. It is random and changes every time. Shortcut Keys: G = Guess, P = Pause, N = New Game</p>
+    <p>
+      <form name="begin">
+        <input type="text" name="counter" value="Please wait..."><br>
+        <input type="button" name="start" value="Begin" onClick="Countdown(); disable(false); document.form1.guess1.focus(); "><br>
+        <input type="button" name="clear" onClick="window.clearTimeout(timer); disable(true); " value="Pause"><br>
+        <input type="button" name="new0" value="New Game" onClick="QQ = window.confirm('Are you sure you want to start a new game?'); if (QQ) location.reload(); ">
+      </form>
+      <form NAME="form1" disabled>
+        <input disabled TYPE="text" SIZE=25 NAME="hint" VALUE="Enter your Guess.">
+        <br>
+        <b>Guess:</b>
+        <input disabled TYPE="text" NAME="guess1" SIZE="5" onKeyPress="return check(event); ">
+        <input disabled TYPE="BUTTON" name="guesser" VALUE="Guess" onClick="Guess(); document.form1.guess1.select()">
+      </form>
+    </p>
+  </body>
+</html>
