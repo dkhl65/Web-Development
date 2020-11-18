@@ -1,0 +1,41 @@
+body {
+	font-family: "Arial", Gadget, sans-serif;
+	background-color: #ffffff;
+}
+img {
+	width: 30px;
+	margin-bottom: 9px;
+	margin-top: 9px;
+	opacity: 0.2;
+}
+td {
+	padding: 5px;
+}
+th {
+	position: sticky;
+	top: 0;
+	background-color: #eeeeee;
+	padding: 5px;
+}
+tr {
+	background-color: #eeeeff;
+}
+select {
+	margin: 3px;
+}
+label {
+	font-size: 10pt;
+}
+button {
+	margin: 5px;
+}
+.icon-label {
+	width: 20px;
+	display:inline-block;
+}
+.type-chart {
+	min-width: 300px;
+}
+.total-row {
+	background-color: #feddff;
+}

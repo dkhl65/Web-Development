@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Pokemon Team Builder</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<h1>Pokemon Team Builder</h1>
+		<table>
+			<tr>
+				<th>Pokemon</th>
+				<th>Attacks</th>
+				<th>Coverage</th>
+				<th>Weaknesses</th>
+				<th>Resistances</th>
+			</tr>
+			<tr class="pokemon-row">
+				<td class="type-column">
+					<label>Type 1: </label>
+					<select class="type-select">
+						<option value="-1">None</option>
+					</select>
+					<br>
+					<label>Type 2: </label>
+					<select class="type-select">
+						<option value="-1">None</option>
+					</select>
+					<br>
+					<label>Ability: </label>
+					<select class="ability-select">
+						<option value="0">Other</option>
+						<option value="1">Lightning Rod</option>
+					</select>
+					<br>
+					<input type="checkbox" class="ingore-checkbox"><label>Ignore in total</label>
+					<br>
+					<button class="reset-button">Reset</button>
+				</td>
+				<td class="move-column">
+					<select class="move-select">
+						<option value="-1">None</option>
+					</select>
+					<br>
+					<select class="move-select">
+						<option value="-1">None</option>
+					</select>
+					<br>
+					<select class="move-select">
+						<option value="-1">None</option>
+					</select>
+					<br>
+					<select class="move-select">
+						<option value="-1">None</option>
+					</select>
+				</td>
+				<td class="coverage-column type-chart"></td>
+				<td class="weaknesses-column type-chart"></td>
+				<td class="resistances-column type-chart"></td>
+			</tr>
+			<tr class="total-row">
+				<td colspan="2">
+					<h2>Total</h2>
+					<button id="reset-all">Reset All</button>
+				</td>
+				<td class="coverage-column type-chart"></td>
+				<td class="weaknesses-column type-chart"></td>
+				<td class="resistances-column type-chart"></td>
+			</tr>
+		</table>
+	</body>
+</html>
