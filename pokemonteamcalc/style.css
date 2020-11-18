@@ -3,9 +3,7 @@ body {
 	background-color: #ffffff;
 }
 img {
-	width: 30px;
-	margin-bottom: 9px;
-	margin-top: 9px;
+	width: 35px;
 	opacity: 0.2;
 }
 td {
@@ -29,12 +27,28 @@ label {
 button {
 	margin: 5px;
 }
+span {
+	width: 35px;
+	height: 35px;
+	display: inline-block;
+	position: relative;
+	margin: 5px;
+}
 .icon-label {
-	width: 20px;
-	display:inline-block;
+	color: white;
+	text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 1px 0px black, -1px 0px black, 0px 1px black, 0px -1px black;
+	position: absolute;
+	text-align: center;
+	top: 10px;
+	right: 0px;
+	display: inline-block;
+	width: 100%;
+}
+.type-column {
+	min-width: 160px;
 }
 .type-chart {
-	min-width: 300px;
+	min-width: 270px;
 }
 .total-row {
 	background-color: #feddff;
