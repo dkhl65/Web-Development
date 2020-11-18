@@ -2,10 +2,6 @@ body {
 	font-family: "Arial", Gadget, sans-serif;
 	background-color: #ffffff;
 }
-img {
-	width: 35px;
-	opacity: 0.2;
-}
 td {
 	padding: 5px;
 }
@@ -34,6 +30,10 @@ span {
 	position: relative;
 	margin: 5px;
 }
+.type-img {
+	width: 35px;
+	opacity: 0.1;
+}
 .icon-label {
 	color: white;
 	text-shadow: 1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 1px 0px black, -1px 0px black, 0px 1px black, 0px -1px black;
@@ -50,6 +50,6 @@ span {
 .type-chart {
 	min-width: 270px;
 }
-.total-row {
+#total-row {
 	background-color: #feddff;
 }
