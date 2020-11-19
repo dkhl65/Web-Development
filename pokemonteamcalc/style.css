@@ -2,6 +2,9 @@ body {
 	font-family: "Arial", Gadget, sans-serif;
 	background-color: #ffffff;
 }
+table {
+	width: 100%;
+}
 td {
 	padding: 5px;
 }
@@ -30,7 +33,7 @@ span {
 	position: relative;
 	margin: 5px;
 }
-.type-img {
+.matchup-img {
 	width: 35px;
 	opacity: 0.1;
 }
@@ -45,10 +48,13 @@ span {
 	width: 100%;
 }
 .type-column {
-	min-width: 160px;
+	min-width: 170px;
 }
 .type-chart {
 	min-width: 270px;
+}
+.coverage-column, .weaknesses-column, .resistances-column {
+	text-align: center;
 }
 #total-row {
 	background-color: #feddff;
