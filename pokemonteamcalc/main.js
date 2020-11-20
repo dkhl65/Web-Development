@@ -64,8 +64,9 @@ $(document).ready(() => {
 				(ability === ABILITIES.indexOf("Sap Sipper") && i === TYPES.indexOf("grass"))) {
 					$(row).find(".resistances-column").find(".matchup-img").eq(i).css("opacity", "1");
 					$(row).find(".resistances-column").find(".icon-label").eq(i).html("Im");
-					immunity = 1;
-					immunities[i] += immunity;
+					if(!$(row).find(".ignore-checkbox").prop("checked")) {
+						immunities[i]++;
+					}
 					continue;
 				}
 				if(ability === ABILITIES.indexOf("Dry Skin") && i === TYPES.indexOf("fire")) {
@@ -130,25 +131,33 @@ $(document).ready(() => {
 	});
 	
 	// update coverage when a setting is changed
-	$(".attack-column, .ignore-checkbox").change(() => {
+	$(".attack-column, .ignore-checkbox, .ability-select").change(() => {
 		$(".coverage-column").empty();
 		let allAttacks = [];
+		let allAbilities = [];
 		
 		$(".pokemon-row").each((a, row) => {
 			let attacks = [];
+			let ability = $(row).find(".ability-select").val();
+			let abilityCopies = [];
 			$(row).find(".attack-select").each((b, obj) => {
 				let attack = parseInt($(obj).val());
 				if(attack >= 0) {
 					if(attacks.indexOf(attack) < 0) {
 						attacks.push(attack);
-					}
-					if(allAttacks.indexOf(attack) < 0 && !$(row).find(".ignore-checkbox").prop("checked")) {
-						allAttacks.push(attack);
+						abilityCopies.push(ABILITIES[ability] || "");
+						if(!$(row).find(".ignore-checkbox").prop("checked")) {
+							allAttacks.push(attack);
+							allAbilities.push(ABILITIES[ability] || "");
+						}
 					}
 				}
 			});		
 			
-			let ineffective = getIneffectiveCoverage(attacks);
+			// get the ineffective type combinations
+			let ineffective = getIneffectiveCoverage(attacks, abilityCopies);
+			
+			// display the icons of ineffective type combinations
 			for(let i = 0; i < ineffective.length; i++) {
 				let types = ineffective[i].split('-');
 				if(types.length > 1) {
@@ -160,7 +169,7 @@ $(document).ready(() => {
 		});
 		
 		// show the common uncovered types
-		let totalIneffective = getIneffectiveCoverage(allAttacks);
+		let totalIneffective = getIneffectiveCoverage(allAttacks, allAbilities);
 		for(let i = 0; i < totalIneffective.length; i++) {
 			let types = totalIneffective[i].split('-');
 			if(types.length > 1) {

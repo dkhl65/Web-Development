@@ -34,7 +34,20 @@ const ABILITIES = ["Lightning Rod", "Motor Drive", "Volt Absorb", "Storm Drain",
 "Fluffy", "Flash Fire", "Heatproof", "Water Bubble", "Thick Fat", "Levitate", "Sap Sipper", "Wonder Guard",
 "Scrappy", "Tinted Lens"];
 
-function getIneffectiveCoverage(attacks) {
+function getMatchup(attack, ability, type1, type2) {
+	let matchup = MATCHUPS[attack][type1];
+	if(!!type2) {
+		matchup *= MATCHUPS[attack][type2];
+	}
+	if(ability === "Tinted Lens" && matchup < 1) {
+		matchup *= 2;
+	} else if(ability === "Scrappy" && (type1 === TYPES.indexOf("ghost") || type2 ===  TYPES.indexOf("ghost")) && matchup === 0) {
+		matchup = 1;
+	}
+	return matchup;
+}
+
+function getIneffectiveCoverage(attacks, abilities) {
 	if(attacks.length < 1) {
 		return [];
 	}
@@ -44,7 +57,7 @@ function getIneffectiveCoverage(attacks) {
 		//check effectiveness against a single type
 		let effective = false;
 		for(let i = 0; i < attacks.length; i++) {
-			if(MATCHUPS[attacks[i]][type1] >= 1) {
+			if(getMatchup(attacks[i], abilities[i], type1) >= 1) {
 				effective = true;
 				break;
 			}
@@ -67,7 +80,7 @@ function getIneffectiveCoverage(attacks) {
 				continue;
 			}
 			for(let i = 0; i < attacks.length; i++) {
-				if(MATCHUPS[attacks[i]][type1] * MATCHUPS[attacks[i]][type2] >= 1) {
+				if(getMatchup(attacks[i], abilities[i], type1, type2) >= 1) {
 					effective = true;
 					break;
 				}
