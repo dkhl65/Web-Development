@@ -156,6 +156,9 @@ $(document).ready(() => {
 			
 			// get the ineffective type combinations
 			let ineffective = getIneffectiveCoverage(attacks, abilityCopies);
+			if(ineffective.length < 1 && attacks.length > 0) {
+				$(row).find(".coverage-column").html("Perfect coverage!");
+			}
 			
 			// display the icons of ineffective type combinations
 			for(let i = 0; i < ineffective.length; i++) {
@@ -168,8 +171,13 @@ $(document).ready(() => {
 			}
 		});
 		
-		// show the common uncovered types
+		// get the common uncovered types
 		let totalIneffective = getIneffectiveCoverage(allAttacks, allAbilities);
+		if(totalIneffective.length < 1 && allAttacks.length > 0) {
+			$("#total-row").find(".coverage-column").html("Perfect coverage!");
+		}
+		
+		// display the icons of ineffective type combinations
 		for(let i = 0; i < totalIneffective.length; i++) {
 			let types = totalIneffective[i].split('-');
 			if(types.length > 1) {
@@ -192,5 +200,15 @@ $(document).ready(() => {
 		$(".icon-label").html("");
 		$("table").find("select").val("-1");
 		$("td").trigger("change");
+	});
+	
+	// help button
+	$("#help-button").click(() => {
+		if($("#help-div").is(":hidden")) {
+			$("#help-button").text("Hide Help");
+		} else {
+			$("#help-button").text("Show Help");
+		}
+		$("#help-div").toggle();
 	});
 });

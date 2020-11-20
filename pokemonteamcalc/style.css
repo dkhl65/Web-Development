@@ -21,7 +21,7 @@ label {
 	font-size: 10pt;
 }
 button {
-	margin: 5px;
+	margin: 3px;
 }
 .matchup-span {
 	width: 36px;
@@ -85,4 +85,7 @@ button {
 }
 #total-row {
 	background-color: #feddff;
+}
+#help-div {
+	max-width: 1000px;
 }
