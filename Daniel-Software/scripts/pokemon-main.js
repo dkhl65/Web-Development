@@ -5,7 +5,7 @@ $(document).ready(() => {
 		if(i > 0 && i % 6 === 0) {
 			$(".type-chart").append("<br>");
 		}
-		$(".type-chart").append(`<span class="matchup-span"><img class="matchup-img" src="icons/${TYPES[i]}.png"></img><label class="icon-label"></label></span>`);
+		$(".type-chart").append(`<span class="matchup-span"><img class="matchup-img" src="images/icons/${TYPES[i]}.png"></img><label class="icon-label"></label></span>`);
 	}
 	$(".attack-select").append('<option value="18">Freeze-Dry</option>');
 	$(".attack-select").append('<option value="19">Thousand Arrows</option>');
@@ -164,9 +164,9 @@ $(document).ready(() => {
 			for(let i = 0; i < ineffective.length; i++) {
 				let types = ineffective[i].split('-');
 				if(types.length > 1) {
-					$(row).find(".coverage-column").append(`<div class="coverage-div"><span class="coverage-span"><img class="left-coverage-img" src="icons/${TYPES[types[0]]}.png"></span><span class="coverage-span"><img class="right-coverage-img" src="icons/${TYPES[types[1]]}.png"></span></div> `);
+					$(row).find(".coverage-column").append(`<div class="coverage-div"><span class="coverage-span"><img class="left-coverage-img" src="images/icons/${TYPES[types[0]]}.png"></span><span class="coverage-span"><img class="right-coverage-img" src="images/icons/${TYPES[types[1]]}.png"></span></div> `);
 				} else {
-					$(row).find(".coverage-column").append(`<img class="coverage-img" src="icons/${TYPES[types[0]]}.png"> `);
+					$(row).find(".coverage-column").append(`<img class="coverage-img" src="images/icons/${TYPES[types[0]]}.png"> `);
 				}
 			}
 		});
@@ -181,9 +181,9 @@ $(document).ready(() => {
 		for(let i = 0; i < totalIneffective.length; i++) {
 			let types = totalIneffective[i].split('-');
 			if(types.length > 1) {
-				$("#total-row").find(".coverage-column").append(`<div class="coverage-div"><span class="coverage-span"><img class="left-coverage-img" src="icons/${TYPES[types[0]]}.png"></span><span class="coverage-span"><img class="right-coverage-img" src="icons/${TYPES[types[1]]}.png"></span></div> `);
+				$("#total-row").find(".coverage-column").append(`<div class="coverage-div"><span class="coverage-span"><img class="left-coverage-img" src="images/icons/${TYPES[types[0]]}.png"></span><span class="coverage-span"><img class="right-coverage-img" src="images/icons/${TYPES[types[1]]}.png"></span></div> `);
 			} else {
-				$("#total-row").find(".coverage-column").append(`<img class="coverage-img" src="icons/${TYPES[types[0]]}.png"> `);
+				$("#total-row").find(".coverage-column").append(`<img class="coverage-img" src="images/icons/${TYPES[types[0]]}.png"> `);
 			}
 		}
 	});
