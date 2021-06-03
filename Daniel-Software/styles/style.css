@@ -48,6 +48,8 @@ body {
 	margin: 4px;
 	background-color: #FFCC77;
 	font-family: "Arial", Gadget, sans-serif;
+	text-decoration: none;
+	color: #112299;
 }
 
 a {
